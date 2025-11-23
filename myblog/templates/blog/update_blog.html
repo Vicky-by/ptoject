@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %} update Blog  {% endblock %}
+
+{% block content %}
+
+<dev class="container my-s">
+<h1>update your blog </h1>
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="mb-3">
+        <label for="image" class="form-label"><h3>Blog Image </h3> </label>
+        <input type="file" class="form-control" id="image" name="image">
+    </div>
+    <div class="mb-3">
+        <label for="text" class="form-label">Blog Text</label>
+        <textarea class="form-control" id="text" name="text" rows="3" value="{{blog.text}}"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+{% endblock %}
+</dev>

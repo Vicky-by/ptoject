@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %} home  {% endblock %}
+
+{% block content %} 
+
+<dev class="container my-s">
+<h1>My Bog</h1>
+<div class="container d-flex flex-wrap gap-3">
+    {% for blog in blogs %}
+<div class="card" style="width: 18rem;">
+  <img src="{{blog.image.url}}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{ blog.user}}</h5>
+    <p class="card-text">{{blog.text}}</p >
+      {%if request.user == blog.user  %}
+    <a href="{% url 'update_blog'  blog.id %}" class="btn btn-primary">Edit</a>
+    <a href="{% url 'delete_blog'  blog.id %}" class="btn btn-danger">delete</a>
+    {% endif %}
+  </div>
+</div> 
+{% endfor %}
+</div>
+
+</dev>
+{% endblock %}
